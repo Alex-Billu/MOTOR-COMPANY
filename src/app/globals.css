@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #0B192C;      /* Deep industrial dark blue */
+  --primary-light: #1E3E62;/* Mid-tone slate blue */
+  --secondary: #E02424;    /* Vibrant industrial red */
+  --secondary-hover: #C21C1C;
+  --accent: #00F0FF;       /* Cyan/water accent for highlights */
+  --background: #0B192C;   /* Main background is dark blue */
+  --foreground: #F8FAFC;   /* Very light gray/slate text */
+  --card-bg: rgba(30, 62, 98, 0.4);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-accent: var(--accent);
+  --color-background-custom: var(--background);
+  --color-foreground-custom: var(--foreground);
+}
+
+body {
+  background-color: var(--primary);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: rgba(30, 62, 98, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(30, 62, 98, 0.35);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px 0 rgba(0, 240, 255, 0.1);
+}
+
+.glass-card-red {
+  background: rgba(224, 32, 32, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(224, 32, 32, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-red:hover {
+  background: rgba(224, 32, 32, 0.1);
+  border-color: rgba(224, 32, 32, 0.3);
+  box-shadow: 0 12px 40px 0 rgba(224, 32, 32, 0.15);
+}
+
+/* Text Gradients */
+.text-gradient-red {
+  background: linear-gradient(135deg, #FF6B6B 0%, #E02424 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #00F0FF 0%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
+}
+
+/* Wave Background overlay */
+.wave-bg {
+  position: relative;
+  background: linear-gradient(180deg, #0B192C 0%, #0E294B 50%, #0B192C 100%);
+}
+
+.wave-bg::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle at 30% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+                    radial-gradient(circle at 80% 70%, rgba(224, 32, 32, 0.04) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* High-tech metal lines */
+.industrial-grid {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B192C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E3E62;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E02424;
+}
+
+/* Hide navigation default markers */
+summary::-webkit-details-marker {
+  display: none;
+}
